@@ -7,16 +7,30 @@ buildscript {
         mavenCentral()
         maven { url "https://repo.spring.io/snapshot" }
         maven { url "https://repo.spring.io/milestone" }
+        maven { url "https://plugins.gradle.org/m2/" }
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath "com.moowork.gradle:gradle-node-plugin:1.1.1"
+        classpath "com.moowork.gradle:gradle-gulp-plugin:0.13"
     }
 }
 
 apply plugin: 'java'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
+apply plugin: "com.moowork.node"
+apply plugin: "com.moowork.gulp"
 apply plugin: 'war'
+
+node {
+    version = '10.11.0'
+    download = true
+}
+classes.dependsOn gulp_build
+gulp_build.dependsOn npm_install
+
+
 
 group 'com.sys5'
 version '1.0-SNAPSHOT'
@@ -43,6 +57,7 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-web')
     compile('org.springframework.boot:spring-boot-starter-security')
     compile('org.springframework.boot:spring-boot-devtools')
+
     compileOnly('org.projectlombok:lombok')
     compile "org.thymeleaf:thymeleaf:3.0.9.RELEASE"
     compile "org.thymeleaf:thymeleaf-spring4:3.0.9.RELEASE"
