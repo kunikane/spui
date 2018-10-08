@@ -7,16 +7,30 @@ buildscript {
         mavenCentral()
         maven { url "https://repo.spring.io/snapshot" }
         maven { url "https://repo.spring.io/milestone" }
+        maven { url "https://plugins.gradle.org/m2/" }
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath "com.moowork.gradle:gradle-node-plugin:1.1.1"
+        classpath "com.moowork.gradle:gradle-gulp-plugin:0.13"
     }
 }
 
 apply plugin: 'java'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
+apply plugin: "com.moowork.node"
+apply plugin: "com.moowork.gulp"
 apply plugin: 'war'
+
+node {
+    version = '10.11.0'
+    download = true
+}
+classes.dependsOn gulp_build
+gulp_build.dependsOn npm_install
+
+
 
 group 'com.sys5'
 version '1.0-SNAPSHOT'
@@ -38,9 +52,12 @@ war {
 }
 
 dependencies {
+    compile 'org.projectlombok:lombok:1.18.2'
     compile('org.springframework.boot:spring-boot-starter-thymeleaf')
     compile('org.springframework.boot:spring-boot-starter-web')
-    runtime('org.springframework.boot:spring-boot-devtools')
+    compile('org.springframework.boot:spring-boot-starter-security')
+    compile('org.springframework.boot:spring-boot-devtools')
+
     compileOnly('org.projectlombok:lombok')
     compile "org.thymeleaf:thymeleaf:3.0.9.RELEASE"
     compile "org.thymeleaf:thymeleaf-spring4:3.0.9.RELEASE"
@@ -48,17 +65,8 @@ dependencies {
     compile('org.webjars:jquery:3.3.1')
     compile('org.webjars:jquery-ui:1.12.1')
     compile('org.webjars:bootstrap:3.3.7')
+    compile('org.webjars:react:16.5.2')
     providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
     testCompile('org.springframework.boot:spring-boot-starter-test')
-
-//    compile group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.0'
-//    compile('org.springframework.boot:spring-boot-starter-web')
-//    compile('org.springframework.boot:spring-boot-starter-data-jpa')
-//    compile "org.thymeleaf:thymeleaf:3.0.9.RELEASE"
-//    compile "org.thymeleaf:thymeleaf-spring4:3.0.9.RELEASE"
-//    compile('nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:2.3.0')
-//    compile('org.flywaydb:flyway-core')
-//    runtime('mysql:mysql-connector-java')
-//    testCompile('org.springframework.boot:spring-boot-starter-test')
 
 }

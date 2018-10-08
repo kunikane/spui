@@ -1,0 +1,28 @@
+{
+  "name": "spui",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kunikane/spui.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kunikane/spui/issues"
+  },
+  "homepage": "https://github.com/kunikane/spui#readme",
+  "devDependencies": {
+    "gulp-less": "^4.0.1",
+    "gulp-sass": "^4.0.1",
+    "less": "^3.8.1",
+    "sass": "^1.14.1"
+  },
+  "dependencies": {
+    "gulp": "^3.9.1"
+  }
+}

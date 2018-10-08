@@ -1,27 +1,82 @@
 <!DOCTYPE html>
-<html lang="ja" xmlns="http://www.w3.org/1999/xhtml"
+<html lang="ja"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
-<head>
-    <meta charset="UTF-8">
-    <title>Spring Boot Sample Site</title>
-    <meta name="description" content="common-meta">
-    <link th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet" />
-    <link th:href="@{/webjars/jquery-ui/1.12.1/jquery-ui.min.css}" rel="stylesheet" />
-    <script th:src="@{/webjars/jquery/3.3.1/jquery.min.js}"></script>
-    <script th:src="@{/webjars/jquery-ui/1.12.1/jquery-ui.min.js}"></script>
-    <script th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
-</head>
-<body>
-<div class="col-lg-6">
-    <div class="bg-primary">
-        <form th:action="@{/}" method="post">
-            <h2 layout:fragment="header"></h2>
-            <button>ログアウト</button>
-        </form>
-    </div>
-    <div layout:fragment="contents"></div>
-    <footer style="text-align:right;">共通フッタ</footer>
-</div>
-</body>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Sample Tool</title>
+        <meta name="description" content="common-meta">
+        <link th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" rel="stylesheet" />
+        <link th:href="@{/webjars/jquery-ui/1.12.1/jquery-ui.min.css}" rel="stylesheet" />
+        <script th:src="@{/webjars/jquery/3.3.1/jquery.min.js}"></script>
+        <script th:src="@{/webjars/jquery-ui/1.12.1/jquery-ui.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+    </head>
+
+    <body>
+        <header class="col-lg-12 bg-primary">
+            <h4>Sample Tool</h4>
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarEexample">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <!--<a class="navbar-brand" href="#">タイトル</a>-->
+                    </div>
+
+                    <div class="collapse navbar-collapse" id="navbarEexample">
+                        <ul class="nav navbar-nav">
+                            <li class="dropdown active">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">メニューＡ <span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#">メニューＡ１</a></li>
+                                    <li><a href="#">メニューＡ２</a></li>
+                                    <li><a href="#">メニューＡ３</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">メニューＢ <span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#">メニューＢ１</a></li>
+                                    <li><a href="#">メニューＢ２</a></li>
+                                    <li><a href="#">メニューＢ３</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">メニューＣ <span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#">メニューＣ１</a></li>
+                                    <li><a href="#">メニューＣ２</a></li>
+                                    <li><a href="#">メニューＣ３</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">メニューＤ <span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#">メニューＤ１</a></li>
+                                    <li><a href="#">メニューＤ２</a></li>
+                                    <li><a href="#">メニューＤ３</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <div class="col-lg-12" style="min-height:600px">
+            <div layout:fragment="contents"></div>
+        </div>
+
+        <footer class="col-lg-12 bg-primary text-center">
+            <h5>© SYS5 Corporation</h5>
+        </footer>
+    </body>
 </html>

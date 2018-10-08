@@ -1,0 +1,9 @@
+$pjcolor-01: #52B2C4;
+$pjcolor-02: #FFFFFF;
+
+.btn {
+  background-color: $pjcolor-01;
+  span {
+    color: $pjcolor-02;
+  }
+}
